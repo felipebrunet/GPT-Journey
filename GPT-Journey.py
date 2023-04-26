@@ -45,13 +45,9 @@ def get_img(prompt):
         }
         response = requests.request("POST", url, headers=headers, data=payload)
         r = response.json()
-        #print(r)
         image_64 = r["images"][0]
-        #for i in r['images']:
-        #image = Image.open(io.BytesIO(base64.b64decode(i.split(",",1)[0])))
-        #img_url = Image.open(io.BytesIO(base64.b64decode(image_64)))
         img_url = image_64
-        
+
     except Exception as e:
         # if it fails (e.g. if the API detects an unsafe image), use a default image
         img_url = "https://pythonprogramming.net/static/images/imgfailure.png"
